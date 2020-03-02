@@ -1,0 +1,145 @@
+5.Your first command (echo)
+Q1) What do you think is going on when you run this command:
+echo $COLUMNS x $LINES
+
+Answer: The shell is telling me how big my terminal is.	
+
+---------------------------------------------------------------------------
+
+6.Navigating directories
+
+Q1) Which of these commands would list the contents of the Pictures directory?
+
+Answer:
+ls Pictures
+cd Pictures; ls
+ls Pictures/ ../Pictures
+
+---------------------------------------------------------------------------
+
+7.Current working directory
+
+Q1) Why are shell commands so short?
+
+Answer: It makes for less typing.
+The Unix system was originally designed in an era when the connections between computers and terminals were very slow, so making commands really short made it much faster to use. This is true not only for the shell, but also for other parts of the Unix system, such as the C programming language.
+
+---------------------------------------------------------------------------
+
+8.Use parameters and options in your commands
+
+Q1) Which pieces of information can you find out from ls -l? You may want to do some research to answer this question; use your favorite search engine.
+
+Answer:
+The name of each listed file or directory.
+The date and time that a file was last modified.
+The size of a file, in bytes.
+
+Q2) If you wanted to list all the files whose names start with the word bear, how would you do it?
+
+Answer: ls bear*
+
+---------------------------------------------------------------------------\
+
+9. Organizing your files
+
+Q1) Let's say I change my mind and want to move the epub files back from Documents/Books to Documents. How can I do this? My current working directory is my home directory, and Documents is inside that directory.
+
+Answer:
+mv 	Documents/Books/*	Documents
+cd	Documents; mv Books/*epub .
+cd	Documents/Books; mv * ..
+
+---------------------------------------------------------------------------
+
+10. Downloading (curl)
+
+Q1) Enter a shell command to download https://tinyurl.com/zeyq9vc and save it as the file dictionary.txt. Remember to use the option to follow web redirects.
+
+Answer:  curl -o dictionary.txt -L https://tinyurl.com/zeyq9vc
+
+---------------------------------------------------------------------------
+
+11. Viewing files
+
+Q1) Using the dictionary.txt file and the less command, find out the next word after the word goobers in this dictionary.
+
+Answer: good
+
+---------------------------------------------------------------------------
+
+12. Removing files or directories (rm, rmdir)
+
+Q1) You have four files named:
+Good File
+Bad Name Good File
+Bad File
+Good Name Bad Face
+You want to remove files 3 and 4, while leaving 1 and 2 intact. 
+
+Answer:
+rm 'Bad File' 'Good Name Bad Face'
+rm *'Bad F'*
+
+---------------------------------------------------------------------------
+
+13.Searching and pipes (grep, wc)
+
+Q1) How many words are there in dictionary.txt that match the pattern ibo?
+grep -c ibo dictionary.txt
+
+Answer: 22
+
+
+Q2) Research question! You can use grep for more than just matching words. There's a specific term for the patterns that grep lets you use.
+Use your favorite search engine and do a little research to find out what those patterns are called.
+
+Answer: regular expression
+The regular expression used to match correct answers to this quiz is ^[Rr]eg.*[Ee]x.* which means "any string that starts with reg and has ex in it, but upper- and lowercase R and E are both OK.
+
+---------------------------------------------------------------------------
+
+14. Shell and enviroment variables
+
+Q1) Do you think the PWD variable is a shell variable or an environment variable?
+
+Answer: Environment variable
+
+
+Q2) Write a shell command using echo that displays the contents of the variables LOGNAME and PWD with a space between them. Note: In Git bash in Windows you won't get the result from LOGNAME variable because it doesn't exist, try using the command whoami instead.
+
+Answer: echo $LOGNAME $PWD
+
+---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------

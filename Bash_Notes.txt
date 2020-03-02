@@ -1,0 +1,146 @@
+*** Bash Basic Commands ***
+
+Why are shell commands so short?
+The Unix system was originally designed in an era when the connections between computers and terminals were very slow, so making commands really short made it much faster to use. This is true not only for the shell, but also for other parts of the Unix system, such as the C programming language.
+
+----------- first command (echo) ------------------
+
+echo $'hello world'			: print 'hello world'
+
+echo $COLUMNS x $LINES		: show size of your screensize of bash command
+
+----------- Current working directory ------------------
+
+pwd							: show current working directory (Print Working Directory)
+
+-----------------------------
+
+.							: (dot) current directory.
+
+..							: (dot got) parent directory
+
+------------- Navigating directories and Parameters and options ----------------
+
+ls							: List the files/contents in the directory.
+
+ls ~						: List the home directory, example C:/Users/<<Username>> in windows.
+
+ls <<folder_name>>			: show contents of that folder
+
+ls -l						: show details listing of files in current folder
+
+ls -l <<folder_name>>		: show details listing of files in that folder
+
+ls *.pdf					: show files with file extension of 'pdf'
+ls -l *.xls
+ls bear*					: files start with 'bear'
+
+-----------------------------
+
+cd							: Move to a different directory.
+
+cd <<folder_name>> ; ls		: changes directory to the <<folder_name>> subdirectory, then runs ls in that directory.
+
+------------ Organizing your files -----------------
+
+mkdir						: Creates directories
+mkdir <<folder_name>>		: create new folder
+
+mv							:Move files from a directory to another.
+
+mv *.pdf <<folder_name>>	: move all pdf files into that folder
+
+mv folder_name1/folder_name2/*.xls	foldername_3/folder_4
+
+-----------------------------
+
+Example:
+
+mv 	Documents/Books/*	Documents			: move all files from Documents/Books to under Documents
+
+cd	Documents; mv Books/*epub .				: cd to Documents folder. Then move all epub files under Books to Current Directory (.)
+											  which is now "Documents" 	folder.
+
+cd	Documents/Books; mv * ..				: cd to Documents/Books folder. Then move all files to Parent Directory (..)
+
+------------ Downloading -----------------
+
+curl														: Download (curl). to transfer data.
+
+
+curl <<option>> <<final_output>> <<option>> <<source>>		: curl -o google.html -L 'http://google.com'
+															   download form http://google.com and save as 'google.html'
+															   
+curl -o dictionary.txt -L 'https://tinyurl.com/zeyq9vc'		
+												
+												
+------------ Viewing files -----------------
+
+cat							: View file content.	
+cat dictionary.txt	
+
+less						: View file content screen by screen.
+							  Use arrow keys or pg up/pg down/ space to navigate.
+less dictionary.txt
+
+
+/boy						: use slash / to search a word example "boy" while you are viewing file in 'less' mode.
+
+q							: quit from the current command.	
+
+
+------------ Removing files or directories -----------------						  
+
+rm	<<filename>> <<file2name>> etc	: Remove file / Permantely Delete files
+rm 'test.txt' 'test1.txt' 'test2.text'
+rm 'text*'
+rm 'text' 'text1' 'test3'
+
+rm -i <<filenmae>>					: remove file iteractively. give you the warning prompt. Remove xyz file? (Yes/No)
+rm -i valuable.txt	
+
+
+rmdir <<folder_name>>				: Remove directory
+rmdir ebooks
+
+
+------------ Searching and pipes -----------------	
+
+grep							: "global regular expression print,” processes text line by line and prints any lines which match a specified pattern
+
+
+grep <<keyword>> <<file_name>>	:
+grep shell dictionary.txt
+
+
+grep <<keyword>> <<file_name>> | less	: grep the keyword from the file and pipe it to another program 'less' to display results in pages.
+grep shell dictionary.txt | less
+
+
+curl -L https://tinyurl.com/zeyq9vc | grep fish	: download content from url, pipe it to grep command and search for keyword 'fish'. Without acutally downloading.
+
+
+curl -L https://tinyurl.com/zeyq9vc | grep fish	| less		: to view page by page
+
+
+-----------------------------------------------------
+
+wc							: "short for word count" reads either standard input or a list of files and generates one or more of the following statistics: 	 	
+								newline count, word count, and byte count
+
+curl -L https://tinyurl.com/zeyq9vc | grep fish | wc -l				: count the keyword "fish" line by line and give the result number such as 105 times appear.
+
+
+curl -L https://tinyurl.com/zeyq9vc | grep -c fish					: use grep with option c "count" to get keyword count results.
+
+
+------------ Shell environment and variables -----------------	
+
+mynum='one two three'			: assign value to variable mynum. No spaces
+
+echo $mynum						: print mynum values. Variables are noted by $
+
+There are many types of variables such as above one, Shell variables ($LINES , $COLUMNS), environment variables ($PATH, $PWD)
+
+echo $LOGNAME					: name of your currenly log in user
+whoami							: name of your currenly log in user
